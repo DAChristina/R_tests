@@ -25,10 +25,10 @@ Rcpp::cppFunction(
 fun(21, 21)
 
 # Using sourceCpp
-sourceCpp("Rcpp/cpp_test_1.cpp")
+Rcpp::sourceCpp("Rcpp/cpp_test_1.cpp")
 timesTwo(42) # timesTwo from cpp_test_1.cpp
 
-sourceCpp("Rcpp/cpp_test_2.cpp")
+Rcpp::sourceCpp("Rcpp/cpp_test_2.cpp")
 sapply(0:10, cpp_f) # cpp_f from cpp_test_2.cpp
 
 # Deploy the function in R:
@@ -40,6 +40,11 @@ Rcpp::cppFunction(
 ## Using it on first 11 arguments
 sapply(0:10, cpp_f)
 
-sourceCpp("Rcpp/cpp_test_3.cpp")
+Rcpp::sourceCpp("Rcpp/cpp_test_3.cpp")
 sapply(0:10, cpp_fib) # cpp_fib from cpp_test_3.cpp
+
+# Test OOP script from cpp_test_4_OOP.cpp
+Rcpp::sourceCpp("Rcpp/cpp_test_4_OOP.cpp")
+test_myDate(2024, 2, 20)
+
 

@@ -4,6 +4,12 @@
 
 A repo dedicated for testing functional programming in R.
 
+Statistics & bayesian computation:
+
+<https://mfasiolo.github.io/TOI.html>
+
+<https://www.maths.ed.ac.uk/~swood34/core-statistics.pdf>
+
 Source:
 
 <https://adv-r.hadley.nz/introduction.html>
@@ -27,3 +33,5 @@ Additional resources for Rcpp:
 Rcpp basic exercises:
 
 <https://dirk.eddelbuettel.com/papers/useR2019_rcpp_tutorial.pdf>
+
+<https://ocw.uc3m.es/pluginfile.php/3862/mod_page/content/16/solutions%20to%20rcpp%20exercises.pdf>
