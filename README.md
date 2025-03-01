@@ -35,3 +35,9 @@ Rcpp basic exercises:
 <https://dirk.eddelbuettel.com/papers/useR2019_rcpp_tutorial.pdf>
 
 <https://ocw.uc3m.es/pluginfile.php/3862/mod_page/content/16/solutions%20to%20rcpp%20exercises.pdf>
+
+Advanced R Exercises:
+
+<https://adv-r.hadley.nz/index.html>
+
+<https://advanced-r-solutions.rbind.io/>

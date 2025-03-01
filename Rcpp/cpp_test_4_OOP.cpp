@@ -5,6 +5,7 @@ using namespace Rcpp;
 // https://dirk.eddelbuettel.com/papers/useR2019_rcpp_tutorial.pdf p. 54
 // https://www.w3schools.com/cpp/cpp_classes.asp
 // https://www.programiz.com/cpp-programming/object-class
+// https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-modules.pdf
 
 class myDate {
 private:
