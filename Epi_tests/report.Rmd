@@ -1,0 +1,64 @@
+---
+title: "Epidemiological Report"
+author: "Dewi Anastasia Christina"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, echo = FALSE)
+
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(reactable, tidyverse, plotly)
+```
+
+## Introduction
+
+This report contains statistical analyses and data visualisation for pneumococcal carriage post-vaccination in Lombok and Sumbawa (Lesser Sundas). Three sets of data were shared with me on 19 December 2024 to 15 January 2025. They consist of information about the participants's age (month) during vaccination, carriage factors, and other confounding factors.
+
+### 1. Data
+
+```{r}
+
+
+```
+
+### 2. Descriptive statistics
+#### 2.1. Pneumococcal carriage
+#### 2.2. Pneumococcal carriage per serotype
+#### 2.3. Pneumococcal carriage per GPSC
+#### 2.4. Pneumococcal carriage per MLST
+
+
+### 3. Odds ratio, confounders analyses and association test
+logistic regression vs. multivariate analyses (carriage vs. factors/confounders)
+
+Chi square association test (carriage vs. serotype/GPSC/MLST) (or Fisher's Exact for small samples)
+
+Further analyses will be focused on genomic specifications vs. factors/confounders
+I think for continuous factors (age, total people in household) would be better to use Mann-Whitney U (Wilcoxon) or Kruskal-Wallis
+just use chi square test for independence for other categorical factors.
+
+Omit variables in GLM that shows no significant difference in carriage (possibly gender)
+Or just compare models using AIC or LRT (ehe)
+
+
+
+Notes about genomic data analyses:
+carriage status is not filtered: How do genomic types interact with oral cancer diagnosis and other risk factors?
+categorical
+chisq.test(table(OralCancerData$Oral.Cancer..Diagnosis., OralCancerData$Cancer_genome_types))
+continuous
+wilcox.test(Age ~ Cancer_genome_types, data = OralCancerData)
+
+
+carriage status is filtered: Among those who already have oral cancer, how do genomic types relate to other factors?"
+OralCancer_Positive <- OralCancerData %>% filter(Oral.Cancer..Diagnosis. == "Yes")
+kruskal.test(Age ~ Cancer_genome_types, data = OralCancer_Positive)
+chisq.test(table(OralCancer_Positive$Cancer_genome_types, OralCancer_Positive$Tobacco.Use))
+
+
+
+### 4. Genomic analyses among vaccination period
+
+### 5. Discussion
