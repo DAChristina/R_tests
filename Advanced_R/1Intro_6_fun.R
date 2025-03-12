@@ -193,6 +193,7 @@ f2 <- function(x = z) {
   x
 }
 f2()
+# lazy evaluation
 
 # 3. What does this function return? Why? Which principle does it illustrate?
 y <- 10
@@ -201,8 +202,10 @@ f1 <- function(x = {y <- 1; 2}, y = 0) {
 }
 f1()
 y
+# Name masking
 
-# 4. In hist(), the default value of xlim is range(breaks), the default value for breaks is "Sturges", and
+# 4. In hist(), the default value of xlim is range(breaks), 
+# the default value for breaks is "Sturges", and
 range("Sturges")
 #> [1] "Sturges" "Sturges"
 
@@ -217,6 +220,12 @@ show_time()
 #> [1] "2021-02-21 19:22:36 UTC"
 
 # 6. How many arguments are required when calling library()?
+# No mandatory arguments needed!
+
+
+################################################################################
+
+
 
 
 
