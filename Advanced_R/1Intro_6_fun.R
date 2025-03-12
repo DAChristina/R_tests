@@ -102,13 +102,122 @@ objs <- mget(ls("package:base", all = TRUE), inherits = TRUE)
 funs <- Filter(is.function, objs)
 # Use it to answer the following questions:
 # 5.a. Which base function has the most arguments?
-  
+n_args <- funs %>% 
+  purrr::map(formals) %>%
+  purrr::map_int(length) %>% 
+  sort(decreasing = T) # n_args is vector
+head(n_args)
+glimpse(n_args)
+
 # 5.b. How many base functions have no arguments? What’s special about those functions?
-  
+sum(n_args == 0)
+n_args2 <- funs %>% 
+  purrr::discard(is.primitive) %>% 
+  purrr::map(formals) %>% 
+  purrr::map_int(length)
+sum(n_args2 == 0)
+# Most of the functions with no arguments are actually primitive functions.
+
 # 5.c. How could you adapt the code to find all primitive functions?
-  
+funs_primitive <- Filter(is.primitive, objs)  
+length(funs_primitive)
+
 # 5.d. What are the three important components of a function?
-  
+# body, arguments, environment
+f02 <- function(x, y) {
+  # A comment
+  x + y
+}
+
+formals(f02)
+body(f02)
+environment(f02) # where you defined the function
+
 # 5.e. When does printing a function not show the environment it was created in?
+# Primitive functions and functions created in the global environment.
 
 
+################################################################################
+# 6.4.5 Exercises
+# 1. What does the following code return? Why?
+# Describe how each of the three c’s is interpreted.
+c <- 10
+c(c = c)
+
+# 2. What are the four principles that govern how R looks for values?
+# From the deepest function nested inside many layers of another function up to global enviro.
+
+# 3. What does the following function return?
+# Make a prediction before running the code yourself.
+f <- function(x) {
+  f <- function(x) {
+    f <- function() {
+      x ^ 2
+    }
+    f() + 1
+  }
+  f(x) * 2
+}
+f(10)
+
+
+################################################################################
+# 6.5.4 Exercises
+# 1. What important property of && makes x_ok() work?
+x_ok <- function(x) {
+  !is.null(x) && length(x) == 1 && x > 0
+}
+
+x_ok(NULL)
+#> [1] FALSE
+x_ok(1)
+#> [1] TRUE
+x_ok(1:3)
+#> [1] FALSE
+
+# What is different with this code? Why is this behaviour undesirable here?
+x_ok <- function(x) {
+  !is.null(x) & length(x) == 1 & x > 0
+}
+
+x_ok(NULL)
+#> logical(0)
+x_ok(1)
+#> [1] TRUE
+x_ok(1:3)
+#> [1] FALSE FALSE FALSE
+
+# 2. What does this function return? Why? Which principle does it illustrate?
+f2 <- function(x = z) {
+  z <- 100
+  x
+}
+f2()
+
+# 3. What does this function return? Why? Which principle does it illustrate?
+y <- 10
+f1 <- function(x = {y <- 1; 2}, y = 0) {
+  c(x, y)
+}
+f1()
+y
+
+# 4. In hist(), the default value of xlim is range(breaks), the default value for breaks is "Sturges", and
+range("Sturges")
+#> [1] "Sturges" "Sturges"
+
+# Explain how hist() works to get a correct xlim value.
+
+# 5. Explain why this function works. Why is it confusing?
+show_time <- function(x = stop("Error!")) {
+  stop <- function(...) Sys.time()
+  print(x)
+}
+show_time()
+#> [1] "2021-02-21 19:22:36 UTC"
+
+# 6. How many arguments are required when calling library()?
+
+
+
+# 
