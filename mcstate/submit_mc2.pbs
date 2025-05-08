@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#PBS -J 1-12   # Job array index from 1 to 12
+#PBS -l walltime=20:00:00
+#PBS -l select=1:ncpus=4:mem=50gb # 4 mcmc chains
+
+source ~/anaconda3/etc/profile.d/conda.sh
+
+cd $PBS_O_WORKDIR
+# Each array task uses a different seed or parameter
+SEED=$PBS_ARRAY_INDEX
+
+#mkdir /trialFolder # Failed
+conda run -n R_envConda Rscript "$HOME/test/3_pmcmc_2.R" --n_particles 10 --n_steps 1000 --seed $SEED > "$HOME/test/myresult_$SEED.txt"
+#mv *.pdf myresult.txt $PBS_O_WORKDIR
+
+printenv > "$HOME/test/myenv.txt"
+#mv myenv.txt $PBS_O_WORKDIR

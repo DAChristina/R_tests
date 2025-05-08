@@ -1,0 +1,9 @@
+This test requires:
+1. mcstate data
+2. pmcmc script
+3. model script
+4. inputs & outputs folder
+5. qsub pbs file
+
+
+

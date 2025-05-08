@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#PBS -l walltime=20:00:00
+#PBS -l select=1:ncpus=12:mem=50gb
+
+source ~/anaconda3/etc/profile.d/conda.sh
+
+cd $PBS_O_WORKDIR
+#mkdir /trialFolder # Failed
+conda run -n R_envConda Rscript "$HOME/test/3_pmcmc_1.R" --n_particles 10 --n_steps 1000 > "$HOME/test/myresult.txt"
+#mv *.pdf myresult.txt $PBS_O_WORKDIR
+
+printenv > "$HOME/test/myenv.txt"
+#mv myenv.txt $PBS_O_WORKDIR
