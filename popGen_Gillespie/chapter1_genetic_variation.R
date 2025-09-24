@@ -73,4 +73,3 @@ abline(h=0, col="gray")
 
 par(mfrow = c(1, 1))
 
-
